@@ -12,11 +12,13 @@ export class ProductsService extends PrismaClient implements OnModuleInit {
     this.logger.log('Database connected');
   }
   create(createProductDto: CreateProductDto) {
-    return createProductDto;
+    return this.product.create({
+      data: createProductDto,
+    });
   }
 
   findAll() {
-    return `This action returns all products`;
+    return this.product.findMany({});
   }
 
   findOne(id: number) {
